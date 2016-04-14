@@ -7,7 +7,9 @@ Go to 'Manage Extensions' page and it will appear as 'Vanco Payments'. Install t
 Go to Administer -> System Settings -> Payment Processors -> Add Payment Processor
 
 This extension provides 2 payment processors:
+
 1. Vanco Payments Credit Card
+
 2. Vanco Payments ACH
 
 You can add payment processor for either/both options
