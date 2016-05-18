@@ -1,15 +1,1 @@
-<VancoWS>
-  <Auth>
-    <RequestType>Login</RequestType>
-    <RequestID>RequestID</RequestID>
-    <RequestTime>2008-11-24 12:27:52</RequestTime>	
-    <Version>2</Version>
-  </Auth>
-  <Request>	
-    <RequestVars>		
-      <UserID>userID</UserID>	
-      <Password>Password</Password>	
-    </RequestVars>
-  </Request>
-</VancoWS>
-
+<VancoWS><Auth><RequestType>Login</RequestType><RequestID>RequestID</RequestID><RequestTime>2008-11-24 12:27:52</RequestTime><Version>2</Version></Auth><Request><RequestVars><UserID>userID</UserID><Password>Password</Password></RequestVars></Request></VancoWS>

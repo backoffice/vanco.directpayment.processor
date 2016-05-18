@@ -131,7 +131,8 @@ class bin_vancoHistory {
 					$payment_instrument_id = $ContributionDetails[ $installmentCount - 1 ]->payment_instrument_id;
 					$payment_instrument = $paymentMethods[$payment_instrument_id];
 				 }
-		
+				
+				//To update contribution status of 1st contribution for the recurring payment which should have pending status
 				if ( $installmentCount == 1 && $ContributionDetails[ $installmentCount - 1 ]->contribution_status_id == 2 ) {
 					
 					
@@ -166,15 +167,14 @@ class bin_vancoHistory {
 							require_once 'CRM/Contribute/BAO/ContributionPage.php';
 							$subscriptionPaymentStatus = 'START';
 							
-							$this->recurringNotify( $subscriptionPaymentStatus, $contactid,
-																				  $contribution_page_id, $recur );
+							$this->recurringNotify( $subscriptionPaymentStatus, $contactid, $contribution_page_id, $recur );
 							//*************				
 							$contriArr[$newContributionDetails->id][] = 'new';
 												
 						}
 					}				
 						
-				} else if ( $status == 4 ) {			
+				} else if ( $status == 4 ) { //Do nothing for failed trxn, just log it to the log file			
 					$info .= "Received failed transaction with no contribution record. Trxn Ref - $trxnRef \n ";
 					$failedTrxns++;
 				} else { //Adding a new record in Contribution table if no pending record exists
@@ -240,8 +240,7 @@ class bin_vancoHistory {
 					}
 				//***************
 				}
-			} else {
-				//$contactid = $value['CUSTOMERREF'];
+			} else { //If the trxn is not a recurring contribution				
 				$contributionParams = array( 'trxn_id'    => $trxnRef,
 											 );
 				$values = array(); 

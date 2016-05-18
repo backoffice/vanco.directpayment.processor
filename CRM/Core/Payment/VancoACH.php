@@ -76,17 +76,15 @@ class CRM_Core_Payment_VancoACH extends CRM_Core_Payment {
 		$credentials['username'] = $this->_paymentProcessor['user_name'];
 
 		$credentials['password'] = $this->_paymentProcessor['password'];
-    $session = $vanco_obj->Login($credentials);
+		$session = $vanco_obj->Login($credentials);
 
 		if($session['status']== 'FAILED')
-		{
-			return self::error( $credentials['username'], $credentials['password'] );
-			return self::error( $session['error'], $session['desc'] );
+		{		
+			return self::error( 'Not Authorized', 'Either not logged-in or invalid session ID parameter');			
 		}
 
-	  $vancoFields = $this->_getVancoPaymentFields( $vanco_obj, $session['sessionID'] );
-    //CRM_Core_Error::debug( '$vancoFields', $vancoFields );
-    if ( isset( $params['contactID'] ) ) {
+		$vancoFields = $this->_getVancoPaymentFields( $vanco_obj, $session['sessionID'] );
+		if ( isset( $params['contactID'] ) ) {
 			$vancoFields['CustomerID'] = $params['contactID'];
 		}
 

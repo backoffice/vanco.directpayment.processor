@@ -69,10 +69,15 @@ class VancoPaymentService
 			$ReqHeader .= "Content-length: " . strlen($xml) . "\n";
 			$ReqHeader .= "Connection: close\n\n";
 			$ReqHeader .= $xml . "\n\n";
+			//Added by BOT - 13th May, 2016
+			//Changed to handle Vanco's new system constraints 
+			$ReqHeader = str_replace("\n", "\r\n", $ReqHeader);
+			//Ends
+			
 			fwrite($socket, $ReqHeader);
 			$response = '';
 			while (!feof($socket))
-        {
+			{
 				$response .= fgets($socket, 4096);
 			}
 
