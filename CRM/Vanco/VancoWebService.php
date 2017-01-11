@@ -11,7 +11,7 @@ class VancoPaymentService
 	private $offline = null;
 	protected $transaction_log = null;
 
-    function __construct( $vanco="ssl://www.vancodev.com", $port=443, $timeout=15 )  {
+    function __construct( $vanco="ssl://uat.vancopayments.com", $port=443, $timeout=15 )  {
         //Code for setting the variable containing path of custom
         //extension directory
         require_once 'CRM/Utils/System.php';

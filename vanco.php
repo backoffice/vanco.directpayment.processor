@@ -98,8 +98,8 @@ function vanco_civicrm_managed(&$entities) {
       'password_label' => 'Password',
       'url_site_default' => 'https://myvanco.vancopayments.com',
       'url_api_default'  => 'https://myvanco.vancopayments.com/cgi-bin/ws2.vps',
-      'url_site_test_default' => 'https://www.vancodev.com',
-      'url_api_test_default'  => 'https://www.vancodev.com/cgi-bin/wstest2.vps',
+      'url_site_test_default' => 'https://uat.vancopayments.com',
+      'url_api_test_default'  => 'https://uat.vancopayments.com/cgi-bin/ws2.vps',
       'is_recur' => 1,
       'payment_type' => 1,
     ),
@@ -119,8 +119,8 @@ function vanco_civicrm_managed(&$entities) {
       'password_label' => 'Password',
       'url_site_default' => 'https://myvanco.vancopayments.com',
       'url_api_default'  => 'https://myvanco.vancopayments.com/cgi-bin/ws2.vps',
-      'url_site_test_default' => 'https://www.vancodev.com',
-      'url_api_test_default'  => 'https://www.vancodev.com/cgi-bin/wstest2.vps',
+      'url_site_test_default' => 'https://uat.vancopayments.com',
+      'url_api_test_default'  => 'https://uat.vancopayments.com/cgi-bin/ws2.vps',
       'is_recur' => 1,
       'payment_type' => 1,
     ),
@@ -475,7 +475,7 @@ function vanco_civicrm_validateForm( $formName, &$fields, &$files, &$form, &$err
   }
 
   //Validating amount should not be less than or equal to 5
-	if ( $formName == 'CRM_Contribute_Form_Contribution_Main' && $fields['is_recur'] == 0 ){
+	if ( $formName == 'CRM_Contribute_Form_Contribution_Main' && isset($fields['is_recur']) && $fields['is_recur'] == 0 ){
 
 		require_once "CRM/Utils/Rule.php";
 
